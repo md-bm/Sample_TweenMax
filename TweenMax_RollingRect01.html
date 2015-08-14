@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <meta charset="UTF-8">
+    <title>TweenMax Rolling Rect 01</title>
+    <style>
+        body {
+            background: #000000;
+        }
+        #rect {
+            width: 100px;
+            height: 100px;
+            top: 200px;
+            position: relative;
+            border: 2px red solid;
+        }
+    </style>
+    <script type="text/javascript" src="js/tweenmax1.17.0/TweenMax.min.js"></script>
+    <script type="text/javascript">
+        function init() {
+            // "#rect"の参照を取得
+            var rect = document.getElementById("rect");
+
+            // タイムラインを作成
+            var timeline = new TimelineMax({repeat: -1});
+
+            // 右方向に5秒かけて移動するモーションを指定
+            timeline.to(rect, 5.0, {left: "800px", rotationZ: 360});
+        }
+    </script>
+</head>
+<body onload="init()">
+    <div id="rect"></div>
+</body>
+</html>

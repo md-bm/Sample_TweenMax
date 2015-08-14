@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="ja">
+    <meta charset="UTF-8">
+    <title>TweenMax Rolling Rect 01</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body {
+            background: #000;
+            font: 30px sans-serif;
+        }
+
+        #stage {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        #title {
+            width: 450px;
+            text-align: center;
+            padding: 70px 0;
+            color: white;
+        }
+
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 25px;
+            float:left;
+        }
+
+        #red {
+            background-color: #ff0000;
+        }
+
+        #yellow {
+            background-color: #ffff00;
+        }
+
+        #green {
+            background-color: #00ff00;
+        }
+    </style>
+    <script type="text/javascript" src="js/tweenmax1.17.0/TweenMax.min.js"></script>
+    <script type="text/javascript">
+        function init() {
+            // タイムラインを生成（繰り返しなし）
+            var timeline = new TimelineMax({repeat:0});
+
+            // タイトル要素の初期設定（不透明、y = 0）
+            timeline.set(title, {alpha:0, y:0});
+
+            // ボックス要素の初期設定（スケールゼロ）
+            timeline.set([red, yellow, green], {scale:0});
+
+            // タイトル要素のモーション指定（1秒かけて、透明、y = 20 に）
+            timeline.to(title, 1, {alpha:1, y:20});
+
+            // ボックス要素のモーション指定（0.7秒かけて、スケールを等倍、360度回転）
+            timeline.to([red, yellow, green], 0.7, {scale:1, rotation:360});
+        }
+    </script>
+</head>
+<body onload="init()">
+    <div id="stage">
+        <p id='title'>【 TweenMax Sample 】</p>
+        <div class="box" id="red"></div>
+        <div class="box" id="yellow"></div>
+        <div class="box" id="green"></div>
+    </div>
+</body>
+</html>
